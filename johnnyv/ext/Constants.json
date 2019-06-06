@@ -1,0 +1,268 @@
+{
+  "components":{
+    "head": {
+      "servo_list": {
+        "head_servo": {
+          "color_scheme":     "BLACK-RED",
+          "dependencies":     [],
+          "pin":              29,
+          "max_pulse":        180,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        }
+      },
+      "motor_list":{
+      }
+    },
+    "left_arm": {
+      "servo_list": {
+        "finger_servo": {
+          "color_scheme":     "WHITE",
+          "dependencies":     [],
+          "pin":              23,
+          "max_pulse":        180,
+          "min_pulse":        58,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       63,
+          "voltage":          4.8
+        },
+        "thumb_servo": {
+          "color_scheme":     "GREY",
+          "dependencies":     [],
+          "pin":              22,
+          "max_pulse":        180,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       171,
+          "voltage":          4.8
+        },
+        "wrist_servo": {
+          "color_scheme":     "GREEN",
+          "dependencies":     [],
+          "pin":              21,
+          "max_pulse":        180,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        },
+        "upperarm_servo": {
+          "color_scheme":     "BLUE",
+          "dependencies":     [],
+          "pin":              20,
+          "max_pulse":        180,
+          "min_pulse":        45,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       175,
+          "voltage":          4.8
+        },
+        "shoulder_servo": {
+          "color_scheme":     "Unused",
+          "dependencies":     [],
+          "pin":              19,
+          "max_pulse":        180,
+          "min_pulse":        54,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        }
+      },
+      "motor_list": {
+      }
+    },
+    "right_arm": {
+      "servo_list": {
+        "finger_servo": {
+          "color_scheme":     "WHITE",
+          "dependencies":     [],
+          "pin":              28,
+          "max_pulse":        119,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       114,
+          "voltage":          4.8
+        },
+        "thumb_servo": {
+          "color_scheme":     "GREY",
+          "dependencies":     [],
+          "pin":              27,
+          "max_pulse":        180,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       9,
+          "voltage":          4.8
+        },
+        "wrist_servo": {
+          "color_scheme":     "BLUE",
+          "dependencies":     [],
+          "pin":              26,
+          "max_pulse":        180,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        },
+        "upperarm_servo": {
+          "color_scheme":     "GREEN",
+          "dependencies":     [],
+          "pin":              25,
+          "max_pulse":        135,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       9,
+          "voltage":          4.8
+        },
+        "shoulder_servo": {
+          "color_scheme":     "RED-WHITE",
+          "dependencies":     [],
+          "pin":              24,
+          "max_pulse":        129,
+          "min_pulse":        0,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        }
+      },
+      "motor_list": {
+      }
+    },
+    "back": {
+      "servo_list": {
+        "back_servo": {
+          "color_scheme":     "BLACK-BLUE",
+          "dependencies":     [17],
+          "pin":              18,
+          "max_pulse":        117,
+          "min_pulse":        72,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        },
+        "hip_servo": {
+          "color_scheme":     "BLACK-GREEN",
+          "dependencies":     [18],
+          "pin":              17,
+          "max_pulse":        108,
+          "min_pulse":        72,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        }
+      },
+      "motor_list": {
+      }
+    },
+    "base": {
+      "servo_list": {
+        "base_servo": {
+          "color_scheme":     "BLACK-WHITE",
+          "dependencies":     [],
+          "pin":              16,
+          "max_pulse":        162,
+          "min_pulse":        18,
+          "abs_max_pulse":    180,
+          "abs_min_pulse":    0,
+          "pulse_width":      1000,
+          "init_pulse":       90,
+          "voltage":          4.8
+        }
+      },
+      "motor_list": {
+      }
+    },
+    "track": {
+      "servo_list": {
+      },
+      "motor_list": {
+        "forward":{
+          "color_scheme":     "UNUSED",
+          "pin":              30,
+          "init_percentage":  0,
+          "init_direction":   0,
+          "pulse_width":      1000,
+          "voltage":          12.0
+        },
+        "turn":{
+          "color_scheme":     "UNUSED2",
+          "pin":              31,
+          "init_percentage":  0,
+          "init_direction":   0,
+          "pulse_width":      1000,
+          "voltage":          12.0
+        }
+      }
+    }
+  },
+  "cameras":{
+    "noirv2":{
+        "resolution":         "1280x720",
+        "resolution_set":     ["1920x1080",
+                               "3280x2464",
+                               "3280x2464",
+                               "1640x1232",
+                               "1640x922",
+                               "1280x720",
+                               "640x480"],
+        "brightness":         50,
+        "contrast":           0,
+        "sharpness":          0,
+        "saturation":         0,
+        "rotation":           0,
+        "hflip":              false,
+        "vflip":              false,
+        "picture_extension":  ".jpg",
+        "video_extension":    ".h264",
+        "picture_path":       "/johnny5/pictures",
+        "video_path":         "/johnny5/videos"
+    }
+  },
+  "sensors":{
+    "srf08":{
+      "unit":                 "centimeter",
+      "unit_set":{
+        "inches":             "0x50",
+        "centimeter":         "0x51",
+        "milliseconds":       "0x52"
+      }
+    }
+  },
+  "ssc32u": {
+    "baud":                   9600,
+    "timeout":                1.0,
+    "execution_time":         1,
+    "voltage":                7.4
+  },
+  "raspberrypi": {
+    "ip":                    "192.168.2.1",
+    "username":              "admin",
+    "password":              "1234"
+  }
+}

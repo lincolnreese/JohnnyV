@@ -1,0 +1,293 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+
+  "definitions": {
+    "ssc32u":{
+      "type": "object",
+      "properties": {
+                          "baud":           {
+                                             "type": "integer",
+                                             "enum": [9600,38400,115200]
+                          },
+                          "timeout":
+                            {"anyOf": [
+                                            {
+                                             "type": "string",
+                                             "enum": ["NONE"]
+                                            },
+                                            {
+                                             "type": "integer",
+                                             "enum": [0]
+                                            },
+                                            {
+                                             "type": "number",
+                                             "minimum": 0.1
+                                            }
+                            ]
+                          },
+                          "execution_time": {
+                                             "type": "number",
+                                             "minimum": 0
+
+                          },
+                          "voltage":        {
+                                            "type": "number",
+                                            "minimum": 7.4,
+                                            "maximum": 11.1
+                          }
+      },
+      "required": ["baud", "execution_time", "timeout", "voltage"]
+    },
+
+    "raspberrypi": {
+      "type": "object",
+      "properties": {
+                          "ip":           {
+                                            "type": "string",
+                                            "format": "ip-address"
+                          },
+                          "username":     { "type": "string"},
+                          "password":     { "type": "string"}
+      },
+      "required": ["ip", "username", "password"]
+    },
+
+    "components":{
+      "type": "object",
+      "patternProperties": {"^[a-z0-9]+((_)+[a-z0-9]+)*$":{"$ref": "#/definitions/component"}},
+      "additionalProperties": false
+    },
+
+    "component": {
+      "type": "object",
+      "properties": {
+                          "servo_list":  {"$ref": "#/definitions/servo_list"},
+                          "motor_list":  {"$ref": "#/definitions/motor_list"}
+      },
+      "required": ["servo_list","motor_list"]
+    },
+
+    "servo_list": {
+      "type": "object",
+      "patternProperties": {"^[a-z0-9]+((_)+[a-z0-9]+)*$":{"$ref": "#/definitions/servo"}},
+      "additionalProperties": false
+    },
+
+    "motor_list": {
+      "type": "object",
+      "patternProperties": {"^[a-z0-9]+((_)+[a-z0-9]+)*$":{"$ref": "#/definitions/motor"}},
+      "additionalProperties": false
+    },
+
+    "servo": {
+      "type": "object",
+      "properties": {
+                          "color_scheme":  {"type": "string"},
+                          "dependencies":  {
+                                            "type": "array",
+                                            "items": {
+                                                    "type": "number"
+                                            }
+                          },
+                          "pin":           {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 31
+                          },
+                          "max_pulse":     {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 180
+                          },
+                          "min_pulse":     {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 180
+                          },
+                          "abs_max_pulse": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 180
+                          },
+                          "abs_min_pulse": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 180
+                          },
+                          "pulse_width":   {"type": "integer"},
+                          "init_pulse":    {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 180
+                          },
+                          "voltage":        {
+                                            "type": "number",
+                                            "minimum": 4.8,
+                                            "maximum": 6.0
+                          }
+      },
+      "required": ["color_scheme", "dependencies", "pin", "max_pulse","min_pulse", "abs_max_pulse","abs_min_pulse",
+                   "pulse_width", "init_pulse", "voltage"]
+    },
+
+    "motor": {
+      "type": "object",
+      "properties": {
+                          "color_scheme":  {"type": "string"},
+                          "pin":           {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 31
+                          },
+                          "init_percentage":  {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 100
+                          },
+                          "init_direction":{
+                                            "type": "integer",
+                                            "enum": [-1,0,1]
+                          },
+                          "pulse_width":   {
+                                            "type": "integer",
+                                            "minimum": 0
+                          },
+                          "voltage":       {
+                                            "type": "number",
+                                            "minimum": 6.0,
+                                            "maximum": 12.0
+                          }
+      },
+      "required": ["color_scheme", "pin", "init_percentage", "init_direction", "pulse_width", "voltage"]
+    },
+
+    "cameras":{
+      "type": "object",
+      "patternProperties": {"^[a-z0-9]+((_)+[a-z0-9]+)*$":{"$ref": "#/definitions/camera"}},
+      "additionalProperties": false
+    },
+
+    "camera": {
+      "type": "object",
+      "properties": {
+                          "resolution":   {
+                                              "type": "string",
+                                              "enum": ["1920x1080",
+                                                       "3280x2464",
+                                                       "3280x2464",
+                                                       "1640x1232",
+                                                       "1640x922",
+                                                       "1280x720",
+                                                       "640x480"]
+                          },
+                          "resolution_set":   {
+                                               "type": "array",
+                                               "items": {
+                                                 "type": "string",
+                                                 "enum": [
+                                                   "1920x1080",
+                                                   "3280x2464",
+                                                   "3280x2464",
+                                                   "1640x1232",
+                                                   "1640x922",
+                                                   "1280x720",
+                                                   "640x480"
+                                                 ]
+                                               }
+                          },
+                          "brightness":  {
+                                            "type": "number",
+                                            "minimum": 0,
+                                            "maximum": 100
+                          },
+                          "contrast":  {
+                                            "type": "number",
+                                            "minimum": -100,
+                                            "maximum": 100
+                          },
+                          "sharpness":  {
+                                            "type": "number",
+                                            "minimum": -100,
+                                            "maximum": 100
+                          },
+                          "saturation":  {
+                                            "type": "number",
+                                            "minimum": -100,
+                                            "maximum": 100
+                          },
+                          "rotation":{
+                                            "type": "integer",
+                                            "enum": [0,90,180,270]
+                          },
+                          "hflip":         {"type": "boolean"},
+                          "vflip":         {"type": "boolean"},
+                          "picture_extension":  {
+                                            "type": "string",
+                                            "pattern": "^.(jpg|JPG)$"
+                          },
+                          "video_extension":  {
+                                            "type": "string",
+                                            "pattern": "^.(h264|H264)$"
+                          },
+                          "picture_path":{
+                                            "type": "string",
+                                            "pattern": "^(.+)/([^/]+)$"
+                          },
+                          "video_path":{
+                                            "type": "string",
+                                            "pattern": "^(.+)/([^/]+)$"
+                          }
+      },
+      "required": ["resolution", "resolution_set", "brightness", "contrast", "sharpness", "saturation", "rotation",
+                   "hflip", "vflip", "picture_extension", "video_extension", "picture_path", "video_path"]
+    },
+
+    "sensors":{
+      "type": "object",
+      "patternProperties": {"^[a-z0-9]+((_)+[a-z0-9]+)*$":{"$ref": "#/definitions/srf08"}},
+      "additionalProperties": false
+    },
+
+    "srf08": {
+      "type": "object",
+      "properties": {
+                          "unit":         {
+                                              "type": "string",
+                                              "enum": ["inches",
+                                                       "centimeter",
+                                                       "milliseconds"]
+                          },
+                          "unit_set":     {"$ref": "#/definitions/unit_set"}
+      },
+      "required": ["unit", "unit_set"]
+    },
+
+    "unit_set": {
+      "type": "object",
+      "properties": {     "inches": {
+                                              "type": "string",
+                                              "enum": ["0x50"]
+                          },
+                          "centimeter":{
+                                              "type": "string",
+                                              "enum": ["0x51"]
+                          },
+                          "milliseconds":{
+                                              "type": "string",
+                                              "enum": ["0x52"]
+                          }
+      },
+      "required": ["inches", "centimeter", "milliseconds"]
+    }
+  },
+
+  "type": "object",
+  "properties": {
+    "components":     {"$ref": "#/definitions/components"},
+    "cameras":        {"$ref": "#/definitions/cameras"},
+    "sensors":        {"$ref": "#/definitions/sensors"},
+    "ssc32u":         {"$ref": "#/definitions/ssc32u"},
+    "raspberrypi":    {"$ref": "#/definitions/raspberrypi"}
+  },
+  "required": ["components", "cameras", "sensors", "ssc32u", "raspberrypi"]
+}

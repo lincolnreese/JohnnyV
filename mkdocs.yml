@@ -1,0 +1,13 @@
+site_name: johnnyv
+site_description: Pure Python JohnnyV Library
+site_author: Amir Hosh
+repo_url: https://github.com/uow14/es-repos.informatik.uni-ulm.de:/srv/git/labrrm
+
+theme: readthedocs
+
+pages:
+- Home: index.md
+- About:
+  - Release Notes: about/changelog.md
+  - Contributing: about/contributing.md
+  - License: about/license.md
